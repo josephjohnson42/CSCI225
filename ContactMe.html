@@ -3,62 +3,144 @@
 <html lang="en">
     <head>
         <title>Feedback Page</title>
+
+        <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <style type="text/css" media="all">
+            @import url('css/main.css');
+
+                .wrap {
+                  background-color: black;
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  grid-gap: 20px;
+                  grid-auto-rows: minmax(100px, auto);
+
+                  color: white;
+                }
+
+                nav {
+                  grid-column: 1/3;
+                  grid-row: 1/2;
+                }
+                figure {
+                  grid-column: 1/ 2;
+                  grid-row: 2/3;
+                }
+                fieldset{
+                  grid-column: 2/ 3;
+                  grid-row: 2/3;
+                }
+
+
+                nav {
+                    background-color: purple;
+                }
+                li {
+                    font-weight: 500;
+                }
+                .player {
+                    width: 560px;
+                    height: 315px;
+                    overflow: hidden;
+                    z-index: 1;
+                    border-radius: 400px;
+                }
+
+        </style>
     </head>
 
     <body>
-        <h1>Contact Me</h1>
+        <div class="wrap">
+            
+            <nav>
+                <h1>Contact Me</h1>
 
-        <figure>
-            <iframe src="https://www.youtube.com/embed/wcGTqSllruM" width="560" height="315" frameborder="0" allowfullscreen></iframe>
-            <figcaption><i>Me knowing these forms do nothing:</i></figcaption>
-        </figure>
+                <ul>
+                    <li><a href="https://www.usca.edu/" >University of South Carolina Home Page</a></li>
+                    <li><a href="https://www.bing.com/search?q=what+is+2%2B2%3F&cvid=20dae961d370476bac5516d22ea69a32&aqs=edge..69i57j0l8.13729j0j1&pglt=515&FORM=ANNTA1&PC=U531">What I see programming</a></li>
+                    <li><a href="https://hackertyper.net/">Vs What everyone else sees</a></li>
+                </ul>
+            </nav>
+
+            <figure class="ml-auto mr-auto mt-auto mb-auto">
+                <div class = "player">
+                    <iframe src="https://www.youtube.com/embed/wcGTqSllruM" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <figcaption><i>Me knowing these forms do nothing:</i></figcaption>
+            </figure>
+
+            
+            <fieldset class="p-5">
+                <h2>Feedback</h2>
+
+                <form class="form-group" action="">
+
+                    First Name <input type="text" class="form-control" name="fname" placeholder="anonymous" required>
+                    <br>
+
+
+                    Last Name <input type="text" class="form-control" name="lname" placeholder="anonymous" required>
+                    <br>
+
+
+                    Email <input type="email" class="form-control" name="mail" placeholder="name@domain.com">
+                    <br>
+
+
+                    Favorite Website <br>
+                    <select name="FavWebsite" class="form-control" size="1">
+                        <option value="this" selected>This Website</option>
+                        <option value="yt">Youtube</option>
+                        <option value="steam">Steam</option>
+                        <option value="twit">Twitter</option>
+                        <option value="mspaintadv">The Famous MS Paint Adventures Home of the Famous Webcomic Homestuck</option>
+                        <option value="bing">Bing</option>
+                    </select>
+                    <br>
+
+
+                    Darkest Secret <input type="password" class="form-control" name="secret" required>
+                    <small class="form-text text-muted">Your secret must be accurate within 3 micrometers</small>
+                    <br>
+
+
+                    Rate The Site! <input type="range" class="form-range" min="1" max="10" value="0" step="1" name="rating">
+                    <br>
+
+
+                    Is this a site you would reccomend to others?<br>
+                    <input type="radio" class="form-check" name="rec" value="y"> Yes 
+                    <input type="radio" class="form-check" name="rec" value="n"> No
+                    <br>
+
+
+                    Additional Comments <br>
+                    <textarea name="comments" class="form-control" cols="55" rows="5" placeholder="This Website is pretty cool and deserves the 10/10 rating"></textarea>
+                    <br>
+
+                    <input type="checkbox" class="form-check" name="agreement" value="agr" required> By checking this box I am aware that the creator of this site is a massive nerd and that this site is not to be taken seriously
+                    <br>
+
+                    <input type="submit" class="btn btn-primary" name="sub" value="Submit">
+                    <input type="reset" class="btn btn-primary close" name="res" value="Reset">
+                </form>
+            </fieldset>
+        </div>
         
-        <h2>Feedback</h2>
-        
-        <fieldset>
-            <form class="feedback" action="">
-                
-                First Name <input type="text" name="fname" placeholder="anonymous" required>
-                <br>
 
-                Last Name <input type="text" name="lname" placeholder="anonymous" required>
-                <br>
-
-                Email <input type="email" name="mail" placeholder="name@domain.com">
-                <br><br>
-
-                Favorite Website <br>
-                <select name="FavWebsite" size="1">
-                    <option value="this" selected>This Website</option>
-                    <option value="yt">Youtube</option>
-                    <option value="steam">Steam</option>
-                    <option value="twit">Twitter</option>
-                    <option value="mspaintadv">The Famous MS Paint Adventures Home of the Famous Webcomic Homestuck</option>
-                    <option value="bing">Bing</option>
-                </select>
-                <br>
-
-                Darkest Secret <input type="password" name="secret" required>
-                <br><br>
-
-                Rate The Site! <input type="range" min="1" max="10" value="0" step="1" name="rating">
-                <br>
-                
-                Is this a site you would reccomend to others?<br>
-                <input type="radio" name="rec" value="y"> Yes 
-                <input type="radio" name="rec" value="n"> No
-                <br><br>
-
-                Additional Comments <br>
-                <textarea name="comments" cols="55" rows="5" placeholder="This Website is pretty cool and deserves the 10/10 rating"></textarea>
-                <br>
-
-                <input type="checkbox" name="agreement" value="agr" required> By checking this box I am aware that the creator of this site is a massive nerd and that this site is not to be taken seriously
-                <br>
-
-                <input type="submit" name="sub" value="Submit">
-                <input type="reset" name="res" value="Reset">
-            </form>
-        </fieldset>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		    crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		    crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		    crossorigin="anonymous"></script>
     </body>
 </html>
