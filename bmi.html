@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+    <head>
+        <title>Bmi Calculator</title>
+
+        <style type="text/css" media="all">
+            @import url('css/main.css');
+
+            .calcWrapper {
+                position: absolute;
+                background-color: pink;
+                width: 40%;
+                height: 28em;
+                padding: 1em;
+                top: 15%;
+            }
+
+            .bmiMeter {
+                position: absolute;
+                background-image: linear-gradient(to bottom, black, purple);
+                color: white;
+                height: 30em;
+                width: 5.5em;
+                left: 45%;
+                top: 15%;
+                z-index: 50;
+            }
+
+            .meterIndicator {
+                position: absolute;
+                height: 30em;
+                width: 5em;
+                left: 51%;
+                top: 15%;
+                z-index: 51;
+            }
+
+            .visualWrapper {
+                position: absolute;
+                left: 15%;
+                top: 10%;
+                width: 100%;
+                height: 28em;
+                text-align: center;
+            }
+            
+        </style>
+    </head>
+
+
+    <body>
+
+        <div class="calcWrapper">
+            <h1>Bmi Calculator</h1>
+
+            <p>
+                <input type="text" id="name" placeholder="Your Name">
+            </p>
+            <p id="greet">
+                Please enter your name above.
+            </p>
+
+            <p>
+                <input type="number" id="weight" placeholder="Your Weight in Pounds" required> lbs
+            </p>
+
+            <p>
+                <input type="number" id="height" placeholder="Your Height in Inches" required> in
+            </p>
+
+            <p>
+                <select name="age range" id="ageRange">
+                    <option>Under 20</option>
+                    <option>30s-40s</option>
+                    <option>50s-60s</option>
+                    <option>70s-80s</option>
+                    <option>90s-100s</option>
+                </select>
+            </p>
+
+            <input type="submit" id="calcBmi" value="Calculate Bmi">
+
+            <p id="bmi"></p>
+
+
+            <script>
+
+                //event
+                document.getElementById('name').addEventListener('blur', welcome, false);
+                document.getElementById('calcBmi').addEventListener('click', bmiStuff);
+
+                //event handlers
+                function welcome(){
+                    var sE = document.getElementById('name').value;
+
+                    document.getElementById('greet').textContent = "Welcome "+sE+"!"
+                }
+
+                function bmiStuff(){
+                    var sE = document.getElementById('weight');
+                    var w = parseFloat(sE.value);
+                    sE = document.getElementById('height');
+                    var h = parseFloat(sE.value);
+                    var age = document.getElementById('ageRange').value;
+
+                    var output = "";
+                    var bmi = 0.0;
+
+                    //bmi direct outputs
+                    if (w > 0 && h >0){
+                        if (age == "Under 20"){
+                            output += "<a href='https://www.cdc.gov/growthcharts/data/set1clinical/cj41l023.pdf'>Click here to verify your weight category is correct</a> <br><br>";
+                        }
+
+                        bmi = +(((w*703)/(h*h)).toFixed(2));
+                        output += "Your bmi is "+bmi;
+
+                        if (bmi >= 28){
+                            output += "<br><br>It seems that you are overweight / obese";
+                            window.open('http://www.nhlbi.nih.gov/health/public/heart/obesity/lose_wt/control.htm');
+                        }
+
+
+                        //animation
+                        if (bmi > 30){
+                            document.getElementById('indic').animate([{transform:'translate(0, 30em)'}, {transform:'translate(0, 3em)'}], {duration:3000,fill:"forwards"});
+                            document.getElementById('visual').animate([{width: '10px'}, {width: '1500px'}], {duration:3000,fill:"forwards"});
+                        }
+                        else if (bmi > 25){
+                            document.getElementById('indic').animate([{transform:'translate(0, 30em)'}, {transform:'translate(0, 10em)'}], {duration:3000,fill:"forwards"});
+                            document.getElementById('visual').animate([{width: '10px'}, {width: '1000px'}], {duration:3000,fill:"forwards"});
+                        }
+                        else if (bmi > 18.5){
+                            document.getElementById('indic').animate([{transform:'translate(0, 30em)'}, {transform:'translate(0, 17em)'}], {duration:3000,fill:"forwards"});
+                            document.getElementById('visual').animate([{width: '10px'}, {width: '500px'}], {duration:3000,fill:"forwards"});
+                        }
+                        else{
+                            document.getElementById('indic').animate([{transform:'translate(0, 30em)'}, {transform:'translate(0, 23em)'}], {duration:3000,fill:"forwards"});
+                            document.getElementById('visual').animate([{width: '10px'}, {width: '100px'}], {duration:3000,fill:"forwards"});
+                        }
+                    }
+
+                    //in case of invalid
+                    else{
+                        output = "Please enter a valid weight / height";
+                    }
+
+                    //output
+                    document.getElementById('bmi').innerHTML = output;
+                }
+
+            </script>
+        </div>
+
+        <div class="bmiMeter">
+            <br><br>
+            <p>Obese</p>
+            <br><br><br>
+            <p>Overweight</p>
+            <br><br><br>
+            <p>Average</p>
+            <br><br><br>
+            <p>Underweight</p>
+        </div>
+
+        <div class="meterIndicator">
+            <img src="img/bmiIndicator.png" alt="funny arrow" id="indic">
+        </div>
+
+        <div class="visualWrapper">
+                <img src="img/Female_Mii.png" alt="Y o u" id="visual" height="500px" width="500px">
+        </div>
+
+    </body>
+</html>
