@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Loan Calculator</title>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+        <style type="text/css" media="all">
+            @import url('css/main.css');
+        
+            body {
+                background-image: url("img/Estate.jpg");
+            }
+
+            .calcStart {
+                position: absolute;
+                background-color: rgba(94, 94, 168, 0.74);
+                color: white;
+                text-shadow: 0 0 5px rgb(28, 0, 44);
+                top: 30%;
+                left: 20%;
+            }
+
+            .loan {
+                position: absolute;
+                background-color: rgba(142, 142, 212, 0.74);
+                color: white;
+                text-shadow: 0 0 5px rgb(28, 0, 44);
+                top: 30%;
+                left: 55%;
+            }
+
+            .display {
+                position: absolute;
+                background-color: rgba(142, 142, 212, 0.74);
+                color: white;
+                text-shadow: 0 0 5px rgb(28, 0, 44);
+                top: 30%;
+                left: 55%;
+            }
+
+            tr, td {
+                padding: .5em;
+                border: 2px solid rgba(28, 0, 44, 0.726);
+            }
+            
+        </style>
+    </head>
+
+
+    <body>
+
+        <div class="calcStart">
+            <h1>LOAN CALCULATOR</h1>
+            <h1>LOAN CALCULATOR</h1>
+            <h1>LOAN CALCULATOR</h1>
+        </div>
+
+
+        <div class="loan">
+            <p>Loan Amount: $<input type="number" id="amount" placeholder="10000" required></p>
+            <p>Interest Rate: <input type="number" id="rate" placeholder="10" required>%</p>
+            <p>Loan Term: <input type="number" id="term" placeholder="10" required> years</p>
+            <p>Starting Year: <input type="number" id="start" placeholder="2021" required></p>
+            <input type="submit" id="calculate" value="Calculate">
+        </div>
+
+        <div class="display" id="output"> </div>
+
+        <script src="js/loanCalc.js"></script>
+    </body>
+</html>
